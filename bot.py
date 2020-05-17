@@ -212,10 +212,4 @@ async def delete(ctx, a: str):
      else:
          await ctx.send('ターゲット ' + a + ' を見つかりませんでした。')
 
-bot.run('NzEwOTcwMjkwOTE3NzM2NDY4.XsGzEA.CGgl1L6uhIGL0kCJuJ0AA3OrSXI')
-
-
-# //add 人工知能Aレポート1 2020 5 19 23 59
-# //add OSまとめ 2020 5 19 23 59
-# //add 微分方程式 2020 5 26 23 59
-# //add ベクトル解析 2020 5 24 23 59
+bot.run('NzEwOTcwMjkwOTE3NzM2NDY4.XsHBCw.-Nx5peUgGIOFl1HL5fwY12Ljf0o')

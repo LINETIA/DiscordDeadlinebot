@@ -4,6 +4,8 @@ from discord.ext import commands
 bot = commands.Bot(command_prefix='//')
 client = discord.Client()
 
+prpr_cnt = 0
+
 @client.event
 async def on_ready():
     print('Logged in as')
@@ -14,8 +16,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-
-    prpr_cnt = 0
+    global prpr_cnt
 
     # 「おはよう」で始まるか調べる
     if message.content.startswith("おはよう"):
@@ -65,4 +66,4 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-client.run("NzEwOTcwMjkwOTE3NzM2NDY4.XsGzEA.CGgl1L6uhIGL0kCJuJ0AA3OrSXI")
+client.run("NzEwOTcwMjkwOTE3NzM2NDY4.XsHBCw.-Nx5peUgGIOFl1HL5fwY12Ljf0o")
