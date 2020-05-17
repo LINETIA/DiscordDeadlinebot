@@ -5,6 +5,7 @@ bot = commands.Bot(command_prefix='//')
 client = discord.Client()
 
 prpr_cnt = 0
+tql_cnt = 0
 
 @client.event
 async def on_ready():
@@ -17,6 +18,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     global prpr_cnt
+    global tql_cnt
 
     # 「おはよう」で始まるか調べる
     if message.content.startswith("おはよう"):
@@ -43,14 +45,23 @@ async def on_message(message):
 
     if message.content == 'prpr':
         prpr_cnt += 1
-        if prpr_cnt % 2 == 1:
+        if prpr_cnt == 1:
             await message.channel.send('この行為に何らかの不埒の意味は？')
         else:
             await message.channel.send('おやめください。')
+            prpr_cnt = 0
 
     if message.content == 'tql':
-        await message.channel.send('すごいです。')
-    if message.content == '牛逼':
+        tql_cnt += 1
+        if tql_cnt == 1:
+            await message.channel.send('すごいです。')
+        elif tql_cnt == 2:
+            await message.channel.send('。。。すごいです。')
+        elif tql_cnt == 3:
+            await message.channel.send('ほえぇ。')
+            tql_cnt = 0
+
+    if message.content == '牛逼' or message.content == 'nb':
         await message.channel.send('ニュービーです。')
     if message.content == '草' or message.content == '艹' or message.content == 'cao':
         await message.channel.send('草です。')
@@ -66,4 +77,4 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-client.run("NzEwOTcwMjkwOTE3NzM2NDY4.XsHBCw.-Nx5peUgGIOFl1HL5fwY12Ljf0o")
+client.run("token")

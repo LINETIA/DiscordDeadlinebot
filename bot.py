@@ -212,4 +212,4 @@ async def delete(ctx, a: str):
      else:
          await ctx.send('ターゲット ' + a + ' を見つかりませんでした。')
 
-bot.run('NzEwOTcwMjkwOTE3NzM2NDY4.XsHBCw.-Nx5peUgGIOFl1HL5fwY12Ljf0o')
+bot.run('token')
