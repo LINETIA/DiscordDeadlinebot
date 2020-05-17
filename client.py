@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix='//')
-
 client = discord.Client()
 
 @client.event
@@ -15,6 +14,9 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+
+    prpr_cnt = 0
+
     # 「おはよう」で始まるか調べる
     if message.content.startswith("おはよう"):
         # 送り主がBotだった場合反応したくないので
@@ -37,8 +39,14 @@ async def on_message(message):
 
     if message.content == 'neko':
         await message.channel.send('にゃーん。')
+
     if message.content == 'prpr':
-        await message.channel.send('この行為に何らかの不埒の意味は？')
+        prpr_cnt += 1
+        if prpr_cnt % 2 == 1:
+            await message.channel.send('この行為に何らかの不埒の意味は？')
+        else:
+            await message.channel.send('おやめください。')
+
     if message.content == 'tql':
         await message.channel.send('すごいです。')
     if message.content == '牛逼':
@@ -52,9 +60,9 @@ async def on_message(message):
             '我要睡了' or message.content == '我也睡了' \
             or message.content == '我先睡觉了' or message.content == '我去睡觉了':
         await message.channel.send('おやすみなさい。+ message.author.name + "さん。"')
-    if message.content == '我太菜了':
+    if message.content == '我太菜了' or message.content == '太菜了':
         await message.channel.send('弱いです。')
 
     await bot.process_commands(message)
 
-client.run("NzEwOTcwMjkwOTE3NzM2NDY4.XsAqDQ.d3NDhAhooe3Bdz3msfhHMxbCF5s")
+client.run("NzEwOTcwMjkwOTE3NzM2NDY4.XsGzEA.CGgl1L6uhIGL0kCJuJ0AA3OrSXI")
