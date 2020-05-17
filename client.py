@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix='$$')
+bot = commands.Bot(command_prefix='//')
 
 client = discord.Client()
 
@@ -35,7 +35,6 @@ async def on_message(message):
                 # メッセージが送られてきたチャンネルへメッセージを送ります
                 await message.channel.send(m)
 
-
     if message.content == 'neko':
         await message.channel.send('にゃーん。')
     if message.content == 'prpr':
@@ -44,16 +43,18 @@ async def on_message(message):
         await message.channel.send('すごいです。')
     if message.content == '牛逼':
         await message.channel.send('ニュービーです。')
-    if message.content == '草' or message.content == '艹':
+    if message.content == '草' or message.content == '艹' or message.content == 'cao':
         await message.channel.send('草です。')
     if message.content == '我起了':
         await message.channel.send("おはようございます" + message.author.name + "さん。")
     if message.content == '睡了' or message.content == '我睡了' \
-            or message.content == '我先睡了' or message.content == '我要睡了' or message.content == '我也睡了':
+            or message.content == '我先睡了' or message.content == \
+            '我要睡了' or message.content == '我也睡了' \
+            or message.content == '我先睡觉了' or message.content == '我去睡觉了':
         await message.channel.send('おやすみなさい。+ message.author.name + "さん。"')
     if message.content == '我太菜了':
         await message.channel.send('弱いです。')
 
     await bot.process_commands(message)
 
-client.run("NzEwOTcwMjkwOTE3NzM2NDY4.Xr9gWg.Bq3Pdp8E_HadJlFR2whwtL883hc")
+client.run("NzEwOTcwMjkwOTE3NzM2NDY4.XsAqDQ.d3NDhAhooe3Bdz3msfhHMxbCF5s")

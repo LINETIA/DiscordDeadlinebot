@@ -13,7 +13,6 @@ class Deadline(object):
         self.timestamp = datetime(year, month, day, hour, minute).timestamp()
 
 def read_data():
-
     global kadai
 
     def inpl(): return list(map(str, f.readline().split()))
@@ -33,26 +32,41 @@ def read_data():
 
     f.close()
 
-def save_data():
-
+def sort_kadai():
     global kadai
+    kadai.sort(key=lambda kadai: kadai.timestamp, reverse=False)
+
+def save_data():
+    global kadai
+
+    sort_kadai()
 
     f = open('data.txt', 'w')
     for data in kadai:
         f.write(str(data.name) + ' ' + str(data.year) + ' ' + str(data.month)
                 + ' ' + str(data.day) + ' ' + str(data.hour) + ' ' + str(data.minute)
                 + ' ' + str(data.timestamp) + '\n')
-    f.write(''+ '\n')
     f.close()
 
 def add(tem):
-
     global kadai
-    kadai.append(Deadline(tem[0], int(tem[1]), int(tem[2]), int(tem[3]), int(tem[4]), int(tem[5])))
 
-def delete():
-    pass
+    kadai.append(Deadline(tem[0], int(tem[1]), int(tem[2]), int(tem[3]), int(tem[4]), int(tem[5])))
+    save_data()
+
+def delete(target):
+    for i in kadai:
+        if i.name == target:
+            kadai.remove(i)
+            save_data()
+            return 1
+    return 0
+
+def append_zero(num):
+    num = int(num)
+    if num >= 0 and num <= 9:
+        return '0' + str(num)
+    else:
+        return str(num)
 
 kadai = []
-
-# list.sort(key=lambda Kaidai: Kaidai.timestamp, reverse=True)
