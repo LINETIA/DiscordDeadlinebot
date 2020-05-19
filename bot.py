@@ -55,7 +55,7 @@ async def public(ctx, *args):
             await ctx.send('ターゲット ' + i + ' が締切ました。目標を殲滅しました。')
 
 @bot.command()
-async def allpublic(ctx, *args):
+async def publicall(ctx, *args):
 
     data.read_data('data.txt')
     data.sort_kadai()

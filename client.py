@@ -6,6 +6,7 @@ client = discord.Client()
 
 prpr_cnt = 0
 tql_cnt = 0
+kusa_cnt = 0
 
 @client.event
 async def on_ready():
@@ -19,6 +20,7 @@ async def on_ready():
 async def on_message(message):
     global prpr_cnt
     global tql_cnt
+    global kusa_cnt
 
     # 「おはよう」で始まるか調べる
     if message.content.startswith("おはよう"):
@@ -47,6 +49,10 @@ async def on_message(message):
         prpr_cnt += 1
         if prpr_cnt == 1:
             await message.channel.send('この行為に何らかの不埒の意味は？')
+        elif prpr_cnt == 2:
+            await message.channel.send('おやめください。')
+        elif prpr_cnt == 3:
+            await message.channel.send('やっぱり何らかの不埒の意図が？')
         else:
             await message.channel.send('おやめください。')
             prpr_cnt = 0
@@ -64,13 +70,18 @@ async def on_message(message):
     if message.content == '牛逼' or message.content == 'nb':
         await message.channel.send('ニュービーです。')
     if message.content == '草' or message.content == '艹' or message.content == 'cao':
-        await message.channel.send('草です。')
+        kusa_cnt += 1
+        if kusa_cnt == 1:
+            await message.channel.send('草です。')
+        elif kusa_cnt == 2:
+            kusa_cnt = 0
+
     if message.content == '我起了':
         await message.channel.send("おはようございます" + message.author.name + "さん。")
     if message.content == '睡了' or message.content == '我睡了' \
             or message.content == '我先睡了' or message.content == \
             '我要睡了' or message.content == '我也睡了' \
-            or message.content == '我先睡觉了' or message.content == '我去睡觉了':
+            or message.content == '我先睡觉了' or message.content == '我去睡觉了' or message.content == '我先去睡觉了':
         await message.channel.send('おやすみなさい。+ message.author.name + "さん。"')
     if message.content == '我太菜了' or message.content == '太菜了':
         await message.channel.send('弱いです。')
